@@ -42,10 +42,10 @@ INSERT INTO `teachers` VALUES (1,'James S. Morrison','James.Morrison@gmail.com',
 
 
 --
--- Table structure for table `classes`
+-- Table structure for table `coursecategories`
 --
 
-CREATE TABLE IF NOT EXISTS `classes` (
+CREATE TABLE IF NOT EXISTS `coursecategories` (
  `id` int(11) NOT NULL auto_increment,
  `name` varchar(255) default NULL,
  `description` varchar(255) default NULL,
@@ -54,10 +54,10 @@ CREATE TABLE IF NOT EXISTS `classes` (
 
 
 --
--- Dumping data for table `classes`
+-- Dumping data for table `coursecategories`
 --
 
-INSERT INTO `classes` VALUES (1,'Featured',NULL),(2,'New',NULL),(3,'Best Seller',NULL),(4,'Legacy',NULL),(5,'Classic',NULL);
+INSERT INTO `coursecategories` VALUES (1,'Featured',NULL),(2,'New',NULL),(3,'Best Seller',NULL),(4,'Legacy',NULL),(5,'Classic',NULL);
 
 
 
@@ -67,7 +67,7 @@ INSERT INTO `classes` VALUES (1,'Featured',NULL),(2,'New',NULL),(3,'Best Seller'
 
 CREATE TABLE IF NOT EXISTS `courses` (
  `id` int(11) NOT NULL auto_increment,
- `class_id` int(11) NOT NULL,
+ `cat_id` int(11) NOT NULL,
  `teacher_id` int(11) NOT NULL,
  `name` varchar(255) default NULL,
  `description` varchar(255) default NULL,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
  `image` varchar(255) default NULL,
  `sales` int(5) default NULL,
  PRIMARY KEY (`id`),
- CONSTRAINT FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
+ CONSTRAINT FOREIGN KEY (`cat_id`) REFERENCES `coursecategories` (`id`),
  CONSTRAINT FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
