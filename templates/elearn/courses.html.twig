@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Courses</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Elearn project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ asset("styles/bootstrap4/bootstrap.min.css") }}">
+	<link href="{{ asset("plugins/font-awesome-4.7.0/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset("plugins/video-js/video-js.css") }}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ asset("styles/courses.css") }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset("styles/courses_responsive.css") }}">
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+			
+		<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="top_bar_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+								<ul class="top_bar_contact_list">
+									<li><div class="question">Have any questions?</div></li>
+									<li>
+										<div>(009) 35475 6688933 32</div>
+									</li>
+									<li>
+										<div>info@elaerntemplate.com</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>				
+		</div>
+
+		<!-- Header Content -->
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<div class="logo_container">
+								<a href="#">
+									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
+										<div class="logo_img"><img src="images/logo.png" alt=""></div>
+										<div class="logo_text">learn</div>
+									</div>
+								</a>
+							</div>
+							<nav class="main_nav_contaner ml-auto">
+								<ul class="main_nav">
+									<li><a href="{{ path('elearn') }}">home</a></li>
+									<li class="active"><a href="#">courses</a></li>
+									<li><a href="myCourses.html">My courses</a></li>									
+									<li><a href="register.html">Register</a></li>
+									<li><a href="login.html">Login</a></li>
+									<li>WELCOME</a></li>
+								</ul>
+							</nav>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
+
+	<!-- Courses -->
+
+	<div class="courses">
+		<div class="container">
+
+
+
+			<div class="row courses_row">
+			
+
+				<div class="col-lg-10 offset-lg-1">
+					<div class="section_title text-center"><h2>Choose your new course!</h2></div>
+					<br>
+				</div>
+
+				
+				<!-- Course -->
+                {% for course in courses %}
+				<div class="col-lg-4 col-md-6">
+					<div class="course">
+						<div class="course_image"><img src="{{asset('images/' ~ course.course_image)}}" alt=""></div>
+						<div class="course_body">
+							<div class="course_header d-flex flex-row align-items-center justify-content-start">
+								<div class="course_tag"><a href="#">{{ course.categ_name }}</a></div>
+								<div class="course_price ml-auto">Price: <span>${{ course.price }}</span></div>
+							</div>
+							<div class="course_title"><h3><a href="#">{{ course.courses_name }}</a></h3></div>
+							<div class="course_text">{{ course.description }}</div>
+							<div class="course_footer d-flex align-items-center justify-content-start">
+								<div class="course_author_image"><img src="{{asset('images/' ~ course.teacher_image)}}" ></div>
+								<div class="course_author_name">By <a href="#">{{ course.teacher_name }}</a></div>
+								<div class="course_sales ml-auto"><span>{{ course.sales }}</span> Sales</div>
+							</div>
+							<br><div class="text-center"><div class="button"><a href="#">Enroll</a></div></div>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- About -->
+				<div class="col-lg-3 footer_col">
+					<div class="footer_about">
+						<div class="logo_container">
+							<a href="#">
+								<div class="logo_content d-flex flex-row align-items-end justify-content-start">
+									<div class="logo_img"><img src="images/logo.png" alt=""></div>
+									<div class="logo_text">learn</div>
+								</div>
+							</a>
+						</div>
+						<div class="footer_about_text">
+						</div>
+
+						<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script src="{{ asset("js/jquery-3.2.1.min.js") }}"></script>
+<script src="{{ asset("styles/bootstrap4/popper.js") }}"></script>
+<script src="{{ asset("styles/bootstrap4/bootstrap.min.js") }}"></script>
+<script src="{{ asset("plugins/easing/easing.js") }}"></script>
+<script src="{{ asset("plugins/parallax-js-master/parallax.min.js") }}"></script>
+<script src="{{ asset("js/courses.js") }}"></script>
+</body>
+</html>

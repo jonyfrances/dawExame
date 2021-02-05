@@ -1,20 +1,103 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Elearn</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Elearn project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ asset("styles/bootstrap4/bootstrap.min.css") }}">
+	<link href="{{ asset("plugins/font-awesome-4.7.0/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ asset("plugins/OwlCarousel2-2.2.1/owl.carousel.css") }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset("plugins/OwlCarousel2-2.2.1/owl.theme.default.css") }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset("plugins/OwlCarousel2-2.2.1/animate.css") }}">
+	<link href="{{ asset("plugins/video-js/video-js.css") }}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ asset("styles/main_styles.css") }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset("styles/responsive.css") }}">
 
-{% block title %}Hello ElearnController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+</head>
+<body>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="super_container">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/ElearnController.php' |file_link(0) }}">src/Controller/ElearnController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/elearn/home.html.twig'|file_link(0) }}">templates/elearn/home.html.twig</a></code></li>
-    </ul>
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_slider_container">
+			
+			<!-- Home Slider -->
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Slider Item -->
+				<div class="owl-item">
+					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
+					<div class="home_slider_background" style="background-image:url('{{ asset("images/index.jpg") }}')"></div>
+					<div class="home_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_content text-center">
+										<div class="home_logo"><img src="{{ asset("images/home_logo.png") }}" alt=""></div>
+										<div class="home_text">
+											<div class="home_title">Complete Online Courses</div>
+										</div>
+										<div class="home_buttons">
+											<div class="button home_button"><a href="{{ path('courses') }}">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slider Item -->
+				<div class="owl-item">
+					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
+					<div class="home_slider_background" style="background-image:url('{{ asset("images/index.jpg") }}')"></div>
+					<div class="home_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_content text-center">
+										<div class="home_logo"><img src="{{ asset("images/home_logo.png") }}" alt=""></div>
+										<div class="home_text">
+											<div class="home_title">Come Learn with Us!</div>
+										</div>
+										<div class="home_buttons">
+											<div class="button home_button"><a href="{{ path('courses') }}">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
 </div>
-{% endblock %}
+
+<script src="{{ asset("js/jquery-3.2.1.min.js") }}"></script>
+<script src="{{ asset("styles/bootstrap4/popper.js") }}"></script>
+<script src="{{ asset("styles/bootstrap4/bootstrap.min.js") }}"></script>
+<script src="{{ asset("plugins/greensock/TweenMax.min.js") }}"></script>
+<script src="{{ asset("plugins/greensock/TimelineMax.min.js") }}"></script>
+<script src="{{ asset("plugins/scrollmagic/ScrollMagic.min.js") }}"></script>
+<script src="{{ asset("plugins/greensock/animation.gsap.min.js") }}"></script>
+<script src="{{ asset("plugins/greensock/ScrollToPlugin.min.js") }}"></script>
+<script src="{{ asset("plugins/OwlCarousel2-2.2.1/owl.carousel.js") }}"></script>
+<script src="{{ asset("plugins/easing/easing.js") }}"></script>
+<script src="{{ asset("plugins/video-js/video.min.js") }}"></script>
+<script src="{{ asset("plugins/video-js/Youtube.min.js") }}"></script>
+<script src="{{ asset("plugins/parallax-js-master/parallax.min.js") }}"></script>
+<script src="{{ asset("js/custom.js") }}"></script>
+</body>
+</html>

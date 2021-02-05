@@ -37,4 +37,14 @@ class ElearnController extends AbstractController
             'controller_name' => 'ElearnController',
         ]);
     }
+
+    /**
+     * @Route("/elearn/courses", name="courses")
+     */
+    public function courses(): Response
+    {
+        $data['courses'] = $this->elearn_model->get_all_courses();
+
+        return $this->render('elearn/courses.html.twig', $data);
+    }
 }
