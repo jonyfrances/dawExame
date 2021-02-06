@@ -54,9 +54,9 @@
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
 							<div class="logo_container">
-								<a href="#">
+								<a href="{{ path('elearn') }}">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-										<div class="logo_img"><img src="images/logo.png" alt=""></div>
+										<div class="logo_img"><img src="{{ asset("images/logo.png") }}" alt=""></div>
 										<div class="logo_text">learn</div>
 									</div>
 								</a>
@@ -126,7 +126,7 @@
 				
 				<!-- Course -->
             {% for course in courses %}
-				<div class="col-lg-4 col-md-6">
+				<div class="col-lg-4 col-md-6 mano">
 					<div class="course">
 						<div class="course_image"><img src="{{asset('images/' ~ course.image)}}" alt=""></div>
 						<div class="course_body">
@@ -134,11 +134,11 @@
 								<div class="course_tag"><a href="#">{{ course.categ_name }}</a></div>
 								<div class="course_price ml-auto">Price: <span>${{ course.price }}</span></div>
 							</div>
-                            <div class="mano">
+                            <div >
 							    <div class="what course_title"><h3><a href="#">{{ course.name }}</a></h3></div>
                                 <div class="text-center">
                                     <div class="button boto" style="display: none">
-                                        <a href="{{ path('enroll') ~ '/' ~ course.id }}">Enroll</a>
+										<a href="{{ path(cena[loop.index0]) ~ '/' ~ cena_id[loop.index0] }}">{{ texto[loop.index0] }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -165,9 +165,9 @@
 				<div class="col-lg-3 footer_col">
 					<div class="footer_about">
 						<div class="logo_container">
-							<a href="#">
+							<a href="{{ path('elearn') }}">
 								<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-									<div class="logo_img"><img src="images/logo.png" alt=""></div>
+									<div class="logo_img"><img src="{{ asset("images/logo.png") }}" alt=""></div>
 									<div class="logo_text">learn</div>
 								</div>
 							</a>

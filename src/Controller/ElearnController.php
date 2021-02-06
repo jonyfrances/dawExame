@@ -49,8 +49,40 @@ class ElearnController extends AbstractController
             $data['username'] = $this->session->get('username');
             $data['userid'] = $this->session->get('userid');
             $data['loggedin'] = $this->session->get('loggedin');
+            $data['mycourses'] = $this->elearn_model->get_all_enrolls($data['userid']);
+            // dump($data['mycourses']);
+            // dd($data['courses'] );
+            // path('enroll') ~ '/' ~ course.id
+            // $data['cena'][$i] = 'enroll';  
+            //             $data['cena_id'][$i] = $data['courses'][$i]['id'];
+            //             $data['texto'][$i] = 'enroll';
+            for ($i=0; $i < count($data['courses']); $i++) { 
+                $data['cena'][$i] = 'enroll';  
+                $data['cena_id'][$i] = $data['courses'][$i]['id'];
+                $data['texto'][$i] = 'enroll';
+            }
+            for ($i=0; $i < count($data['courses']); $i++) { 
+                for ($j=0; $j < count($data['mycourses']); $j++) {
+                    if($data['courses'][$i]['id'] == $data['mycourses'][$j]['course_id']){
+                        $data['cena'][$i] = 'courses';
+                        $data['texto'][$i] = 'enrolled';
+                        $data['cena_id'][$i] = '';
+                        break;
+                    }
+                    else{
+                        $data['cena'][$i] = 'enroll';  
+                        $data['cena_id'][$i] = $data['courses'][$i]['id'];
+                        $data['texto'][$i] = 'enroll';
+                    }
+                }
+            }
         }
         else{
+            for ($i=0; $i < count($data['courses']); $i++) { 
+                $data['cena'][$i] = 'courses';
+                $data['texto'][$i] = 'Must be logged in to enroll';
+                $data['cena_id'][$i] = '';
+            }
             $data['userid'] = 0;
             $data['username'] = '';
             $data['loggedin'] = 'false';
@@ -65,6 +97,9 @@ class ElearnController extends AbstractController
 
     public function register()
     {
+        if($this->session->get('loggedin') == 'true'){
+            return $this->redirectToRoute('courses');
+        }
         $data['errors'] = 0;
         $data['email'] = '';
         $data['name'] = '';
@@ -199,6 +234,9 @@ class ElearnController extends AbstractController
     * @Route("/elearn/login", name="login")
     */
     public function login(){
+        if($this->session->get('loggedin') == 'true'){
+            return $this->redirectToRoute('courses');
+        }
         if ($this->session->get('errors') > 0)
         {
            $data['errors'] = $this->session->get('errors');
@@ -303,6 +341,14 @@ class ElearnController extends AbstractController
         $data['userid'] = $this->session->get('userid');
         $data['loggedin'] = $this->session->get('loggedin');
         $data['course'] = $this->elearn_model->get_course($id);
+        $data['mycourses'] = $this->elearn_model->get_all_enrolls($data['userid']);
+
+        for ($i=0; $i < count($data['mycourses']); $i++) { 
+            if($data['mycourses'][$i]['course_id'] == $id){
+                $this->session->set('message', 'you can only enroll once per course');
+                return $this->redirectToRoute('message');
+            }
+        }
         if($data['loggedin'] == 'true'){
             $this->elearn_model->enroll_action($data['userid'], $data['course']['id']);
         }

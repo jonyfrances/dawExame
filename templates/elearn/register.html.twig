@@ -50,17 +50,17 @@
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
 							<div class="logo_container">
-								<a href="#">
+								<a href="{{ path('elearn') }}">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-										<div class="logo_img"><img src="images/logo.png" alt=""></div>
+										<div class="logo_img"><img src="{{ asset("images/logo.png") }}" alt=""></div>
 										<div class="logo_text">learn</div>
 									</div>
 								</a>
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href="index.html">home</a></li>
-									<li ><a href="courses.html">courses</a></li>									
+									<li><a href="{{ path('elearn') }}">home</a></li>
+									<li ><a href="{{ path('courses') }}">courses</a></li>									
 									<li class="active"><a href="#">Register</a></li>
 									<li><a href="{{ path('login') }}">Login</a></li>
 								</ul>
@@ -163,9 +163,9 @@
 				<div class="col-lg-3 footer_col">
 					<div class="footer_about">
 						<div class="logo_container">
-							<a href="#">
+							<a href="{{ path('elearn') }}">
 								<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-									<div class="logo_img"><img src="images/logo.png" alt=""></div>
+									<div class="logo_img"><img src="{{ asset("images/logo.png") }}" alt=""></div>
 									<div class="logo_text">learn</div>
 								</div>
 							</a>
