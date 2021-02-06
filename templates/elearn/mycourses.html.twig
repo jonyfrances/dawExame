@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Register</title>
+<title>My Courses</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Elearn project">
@@ -9,8 +9,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("styles/bootstrap4/bootstrap.min.css") }}">
 <link href="{{ asset("plugins/font-awesome-4.7.0/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
 <link href="{{ asset("plugins/video-js/video-js.css") }}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ asset("styles/contact.css") }}">
-<link rel="stylesheet" type="text/css" href="{{ asset("styles/contact_responsive.css") }}">
+<link rel="stylesheet" type="text/css" href="{{ asset("styles/news.css") }}">
+<link rel="stylesheet" type="text/css" href="{{ asset("styles/news_responsive.css") }}">
 </head>
 <body>
 
@@ -59,10 +59,9 @@
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href="index.html">home</a></li>
-									<li ><a href="courses.html">courses</a></li>									
-									<li class="active"><a href="#">Register</a></li>
-									<li><a href="{{ path('login') }}">Login</a></li>
+									<li><a href="{{ path('elearn') }}">home</a></li>
+									<li ><a href="{{ path('courses') }}">Courses</a></li>									
+									<li class="active"><a href="#">My Courses</a></li>
 								</ul>
 							</nav>
 
@@ -71,7 +70,7 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</header
 
 
 	
@@ -79,13 +78,13 @@
 
 	<div class="home">
 		<!-- Background image artist https://unsplash.com/@thepootphotographer -->
-		<div class="home_background parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ asset("images/contact.jpg") }}" data-speed="0.8"></div>
+		<div class="home_background parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ asset("images/news.jpg") }}" data-speed="0.8"></div>
 		<div class="home_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="home_content text-center">
-							<div class="home_title">Register</div>
+							<div class="home_title">My Courses</div>
 						</div>
 					</div>
 				</div>
@@ -93,65 +92,44 @@
 		</div>
 	</div>
 
-	<!-- Contact -->
+	<!-- News -->
 
-	<div class="contact">
-		<div class="container-fluid">
-			<div class="row row-xl-eq-height">
-			<div class="col-xl-3">
-			</div>					
-				<!-- Contact Content -->
-				<div class="col-xl-6">
-					<div class="contact_content">
-						<div class="contact_form_container">
-                            {% if errors > 0 %}
-           		            <h2 style="color: black">Validation failed</h2>
-           		            <ul>
-           	    	        {% for errorMessage in errorMessages %}
-               		            <li style="color: gray">{{ errorMessage }}</li>
-           		            {% endfor %}
-           		            </ul>
-                            <div style="height: 30px"></div>
-       		                {% endif %}  
-							<form action="{{ path('register_action') }}" id="contact_form" class="contact_form" method="POST">
-								<input type="hidden" name="token" value="{{ csrf_token('register_form') }}" />	
-                                <div>
-									<div class="row">
-										<div class="col-lg-6 contact_name_col">
-										    <label for="name">Name:</label>
-											<input name="name" type="text" class="contact_input" required="required" value={{ name }}>
-										</div>
-										<div class="col-lg-6">
-										    <label for="email">Email:</label>
-											<input name="email" type="email" class="contact_input" required="required" value={{ email }}>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6 contact_name_col">
-										<label for="passwd1">Password:</label>									
-										<input name="passwd1" type="password" class="contact_input" required="required">
-									</div>
-									<div class="col-lg-6">
-										<label for="passwd2">Repeat Password:</label>										
-										<input name="passwd2" type="password" class="contact_input" required="required">
-									</div>
-								</div>
-								<input type="submit" class="contact_button" value="Register">
-							</form>
-						</div>
+	<div class="news">
+		<div class="container">
+			<div class="row">
 
-						</div>
+				<!-- News Posts -->
+				<div class="col-lg-8">
+					<div class="news_posts">
+					
+
+						<!-- News Post -->				
+                    {% for course in mycourses %}
+						<div class="news_post">
+							<div class="news_post_body">
+								<div class="news_post_date"><a href="#">Enroll Date: {{ course.enroll_date }}</a></div>
+								<div class="news_post_title"><a href="#">{{ course.course_name }}</a></div>
+								<div class="news_post_meta d-flex flex-row align-items-start justify-content-start">
+									<div class="news_post_author">By <a href="#">{{ course.teacher_name }}</a></div>
+								</div>
+								<div class="news_post_text">
+									<p>{{ course.course_description }}</p>
+								</div>
+							</div>
+						</div>				
+					
+                    {% endfor %}
+					
 					</div>
 				</div>
-			<div class="col-xl-3">
-			</div>	
+
 
 			</div>
-				
+
+
+
 		</div>
 	</div>
-
 
 	<!-- Footer -->
 
@@ -189,7 +167,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset("styles/bootstrap4/bootstrap.min.js") }}"></script>
 <script src="{{ asset("plugins/easing/easing.js") }}"></script>
 <script src="{{ asset("plugins/parallax-js-master/parallax.min.js") }}"></script>
-<script src="{{ asset("https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA") }}"></script>
-<script src="{{ asset("js/contact.js") }}"></script>
+<script src="{{ asset("js/news.js") }}"></script>
 </body>
 </html>

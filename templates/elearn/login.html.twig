@@ -59,10 +59,10 @@
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href="index.html">home</a></li>
-									<li ><a href="courses.html">courses</a></li>									
-									<li class="active"><a href="#">Register</a></li>
-									<li><a href="{{ path('login') }}">Login</a></li>
+									<li><a href="{{ path('elearn') }}">home</a></li>
+									<li ><a href="{{ path('courses') }}">courses</a></li>									
+									<li><a href="{{ path('register') }}">Register</a></li>
+									<li class="active"><a href="{{ path('login') }}">Login</a></li>
 								</ul>
 							</nav>
 
@@ -85,7 +85,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="home_content text-center">
-							<div class="home_title">Register</div>
+							<div class="home_title">Login</div>
 						</div>
 					</div>
 				</div>
@@ -113,31 +113,23 @@
            		            </ul>
                             <div style="height: 30px"></div>
        		                {% endif %}  
-							<form action="{{ path('register_action') }}" id="contact_form" class="contact_form" method="POST">
-								<input type="hidden" name="token" value="{{ csrf_token('register_form') }}" />	
+							<form action="{{ path('login_action') }}" id="contact_form" class="contact_form" method="POST">
+								<input type="hidden" name="token" value="{{ csrf_token('login_form') }}" />	
                                 <div>
 									<div class="row">
-										<div class="col-lg-6 contact_name_col">
-										    <label for="name">Name:</label>
-											<input name="name" type="text" class="contact_input" required="required" value={{ name }}>
-										</div>
-										<div class="col-lg-6">
+										<div class="col-lg-12">
 										    <label for="email">Email:</label>
 											<input name="email" type="email" class="contact_input" required="required" value={{ email }}>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-6 contact_name_col">
+									<div class="col-lg-12 contact_name_col">
 										<label for="passwd1">Password:</label>									
-										<input name="passwd1" type="password" class="contact_input" required="required">
-									</div>
-									<div class="col-lg-6">
-										<label for="passwd2">Repeat Password:</label>										
-										<input name="passwd2" type="password" class="contact_input" required="required">
+										<input name="password" type="password" class="contact_input" required="required">
 									</div>
 								</div>
-								<input type="submit" class="contact_button" value="Register">
+								<input type="submit" class="contact_button" value="Login">
 							</form>
 						</div>
 
